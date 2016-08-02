@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="AssaultCube">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="FrameWork\Headers">
+      <UniqueIdentifier>{12965ca4-84f9-4cb5-9f62-9f36f5948587}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Source">
+      <UniqueIdentifier>{81bcf2b1-842f-42ed-915f-52825ae51ed3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssaultCube\Header">
+      <UniqueIdentifier>{fcddaa0b-38ac-4f41-944f-16cda01b933d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssaultCube\Source">
+      <UniqueIdentifier>{5bd4c36f-0f1d-4d41-8873-d037e2426794}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aimbot.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="esp.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FW.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="geom.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="gltext.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="hackgl.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="mem.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>FrameWork\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AC_Hack.cpp">
+      <Filter>AssaultCube\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AC_main.cpp">
+      <Filter>AssaultCube\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AC_player.cpp">
+      <Filter>AssaultCube\Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AC_Hack.h">
+      <Filter>AssaultCube\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AC_player.h">
+      <Filter>AssaultCube\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AC_SDK.h">
+      <Filter>AssaultCube\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="aimbot.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="esp.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FW.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="geom.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="gltext.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hackgl.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="mem.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>FrameWork\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
