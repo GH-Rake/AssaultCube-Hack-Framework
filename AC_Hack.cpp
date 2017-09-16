@@ -22,7 +22,6 @@ void AC_t::ReadPlayerData()
 	}
 }
 
-
 void AC_t::HackLoop()
 {
 	glGetIntegerv(GL_VIEWPORT, viewport);
@@ -42,7 +41,6 @@ void AC_t::HackLoop()
 
 	if (gameStatus == GSTAT_GAME)
 	{
-
 		ReadGame();
 		ReadPlayerData();
 
@@ -69,7 +67,6 @@ void AC_t::HackLoop()
 }
 
 AC_t * AC = nullptr;
-
 
 //wglSwapBuffers Hook
 GL::twglSwapBuffers owglSwapBuffers;
@@ -112,8 +109,8 @@ std::vector<row> AC_t::HackMenu()
 
 void AC_t::ReadGame()
 {
-	if ((*gameMode == 0 || *gameMode == 4 || *gameMode == 5 || *gameMode == 7 || *gameMode == 11 || *gameMode == 13 || 
-		 *gameMode == 14 || *gameMode == 16 || *gameMode == 17 || *gameMode == 20 || *gameMode == 21))
+	if ((*gameMode == 0 || *gameMode == 4 || *gameMode == 5 || *gameMode == 7 || *gameMode == 11 || *gameMode == 13 ||
+		*gameMode == 14 || *gameMode == 16 || *gameMode == 17 || *gameMode == 20 || *gameMode == 21))
 	{
 		bTeamGame = true;
 	}

@@ -28,7 +28,7 @@ bool FW::SortByAngle(FW::Player_t *lhs, FW::Player_t *rhs)
 	{
 		//return lhs->dist < rhs->dist;
 	}
-	//else  
+	//else
 	return lhs->angleDiff < rhs->angleDiff;
 }
 

@@ -26,7 +26,7 @@ public:
 	float nextRowY;
 	int longRowStrLen;
 	std::vector<row> rows;
-	
+
 	void BuildMenu(std::vector<row> newRows, float x2, float y2);
 	void GetMenuWidth();
 	void GetLongestFunction();

@@ -22,7 +22,7 @@ void FW::ESP::DrawBox(FW::Player_t p, vec3_t screen, GL::Font &font, int windowW
 	}
 	else color = rgb::green;
 
-	float scale = (GAME_UNIT_MAGIC / p.dist) * ( windowWidth / VIRTUAL_SCREEN_WIDTH);
+	float scale = (GAME_UNIT_MAGIC / p.dist) * (windowWidth / VIRTUAL_SCREEN_WIDTH);
 	float x = screen.x - scale;
 	float y = screen.y - scale * PLAYER_ASPECT_RATIO;
 	float width = scale * 2;

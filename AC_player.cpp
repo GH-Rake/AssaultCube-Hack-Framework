@@ -41,19 +41,15 @@ AC_Player_t::AC_Player_t(playerent* ent, bool bTeamGame, int localTeam, float * 
 	}
 	else state = DEAD;
 
-
 	WorldToScreen(*pos, screen, matrix, windowWidth, windowHeight);
 
 	bVisible = IsVisible(localPlayer);
-
-
 }
 
 //good
 /*
 bool AC_Player_t::IsVisible(playerent * localEnt)
 {
-
 uintptr_t traceLine = 0x048a310;
 traceresult_s traceresult;
 traceresult.collided = false;
@@ -78,7 +74,6 @@ add esp, 36
 return !traceresult.collided;
 }
 */
-
 
 bool AC_Player_t::IsVisible(playerent * localent)
 {

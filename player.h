@@ -2,10 +2,10 @@
 #include "windows.h"
 #include "geom.h"
 
-enum state_t { ALIVE, DEAD, SPECTATOR};
+enum state_t { ALIVE, DEAD, SPECTATOR };
 
 namespace FW
-{   
+{
 	//minimum needed for aimbot/ESP
 	class Player_t
 	{

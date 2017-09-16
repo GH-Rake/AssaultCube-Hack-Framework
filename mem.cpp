@@ -38,9 +38,9 @@ std::vector<byte*> mem::FindPatterns(byte pattern[], int length, byte* begin, by
 //Credits to Solaire!
 bool mem::Hook(void * toHook, void * ourFunct, int len)
 {
-	if (len < 5) 
+	if (len < 5)
 	{
-	return false;
+		return false;
 	}
 
 	DWORD  curProtection;
@@ -48,10 +48,10 @@ bool mem::Hook(void * toHook, void * ourFunct, int len)
 
 	memset(toHook, 0x90, len);
 
-	uintptr_t  relativeAddress = ((uintptr_t )ourFunct - (uintptr_t )toHook) - 5;
+	uintptr_t  relativeAddress = ((uintptr_t)ourFunct - (uintptr_t)toHook) - 5;
 
 	*(BYTE*)toHook = 0xE9;
-	*(uintptr_t *)((uintptr_t )toHook + 1) = relativeAddress;
+	*(uintptr_t *)((uintptr_t)toHook + 1) = relativeAddress;
 
 	DWORD  temp;
 	VirtualProtect(toHook, len, curProtection, &temp);
@@ -60,7 +60,7 @@ bool mem::Hook(void * toHook, void * ourFunct, int len)
 }
 
 //Credits to Solaire!
-void * mem::TrampolineHook(void * toHook, void * ourFunct, int len) 
+void * mem::TrampolineHook(void * toHook, void * ourFunct, int len)
 {
 	// Make sure the length is greater than 5
 	if (len < 5) {
@@ -74,13 +74,13 @@ void * mem::TrampolineHook(void * toHook, void * ourFunct, int len)
 	memcpy(gateway, toHook, len);
 
 	// Get the gateway to destination addy
-	uintptr_t  gateJmpAddy = ((uintptr_t )toHook - (uintptr_t )gateway) - 5;
+	uintptr_t  gateJmpAddy = ((uintptr_t)toHook - (uintptr_t)gateway) - 5;
 
 	// Add the jmp opcode to the end of the gateway
-	*(BYTE*)((uintptr_t )gateway + len) = 0xE9;
+	*(BYTE*)((uintptr_t)gateway + len) = 0xE9;
 
 	// Add the address to the jmp
-	*(uintptr_t *)((uintptr_t )gateway + len + 1) = gateJmpAddy;
+	*(uintptr_t *)((uintptr_t)gateway + len + 1) = gateJmpAddy;
 
 	// Place the hook at the destination
 	Hook(toHook, ourFunct, len);
@@ -97,14 +97,10 @@ void * h;
 int len;
 
 hook(char* functName, void* h, int len);
-
-
 };
 
 hook::hook(char* functName, void* h, int len)
 {
-
-
 }
 */
 

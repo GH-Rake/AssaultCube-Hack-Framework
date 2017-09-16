@@ -18,5 +18,4 @@ namespace FW
 		int windowWidth, windowHeight;
 		//what else?
 	};
-
 };

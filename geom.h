@@ -49,7 +49,6 @@ struct vec3_t
 	vec3_t &cross(const vec3_t &a, const vec3_t &b) { x = a.y*b.z - a.z*b.y; y = a.z*b.x - a.x*b.z; z = a.x*b.y - a.y*b.x; return *this; }
 	float cxy(const vec3_t &a) { return x*a.y - y*a.x; }
 
-
 	vec3_t scaleFixedPoint(float scalex, float scaley, vec3_t fixedPoint)
 	{
 		vec3_t newvec;
@@ -57,7 +56,6 @@ struct vec3_t
 		newvec.y = y * scaley + fixedPoint.y*(1 - scaley);
 		return newvec;
 	}
-
 
 	bool WorldToScreen(float fovx, float fovy, float windowWidth, float windowHeight, vec3_t left, vec3_t up, vec3_t forward, vec3_t origin, vec3_t &screen)
 	{
@@ -96,7 +94,6 @@ struct vec4
 	float &operator[](int i) { return v[i]; }
 	float  operator[](int i) const { return v[i]; }
 };
-
 
 struct glmatrixf
 {

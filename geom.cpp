@@ -104,7 +104,6 @@ bool WorldToScreen(vec3_t pos, vec3_t &screen, float matrix[16], int windowWidth
 	return true;
 }
 
-
 bool WorldToScreen2(vec3_t src, vec3_t dst, vec3_t &screen, float fovx, float fovy, float windowWidth, float windowHeight, vec3_t left, vec3_t up, vec3_t forward)
 {
 	vec3_t transform;
