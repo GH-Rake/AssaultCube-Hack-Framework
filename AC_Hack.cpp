@@ -86,6 +86,9 @@ void AC_t::Load()
 	noScope = new Hack(0x463CEB, "\x90\x90\x90\x90\x90");
 	noRecoil = new Hack(0x463786, "\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90");
 	flyHack = new Hack(0x45ADD8, "\x01");
+
+	Hack* rapidFire = new Hack(0x4637e4, "\x90\x90");
+
 	//radarHack = new Hack((void*))
 	//fullbright = new Hack((void*))
 

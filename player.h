@@ -11,7 +11,7 @@ namespace FW
 	{
 	public:
 		//variables to pull from memory
-		vec3_t * pos, *head, *angle, *velocity;
+		vec3 * pos, *head, *angle, *velocity;
 		int * health;
 		state_t state;
 		int team;
@@ -21,8 +21,8 @@ namespace FW
 		bool bEnemy;
 		float dist;
 		float angleDiff;
-		vec3_t angleTo;
-		vec3_t screen = vec3_t();
+		vec3 angleTo;
+		vec3 screen = vec3();
 		bool bValid;
 		bool bVisible;
 

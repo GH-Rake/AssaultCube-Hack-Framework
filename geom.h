@@ -1,65 +1,63 @@
 #pragma once
 #include <algorithm>
 #define PI 3.1415927f
-
 //vector and matrix classes modified from assaultcube source
-//Lots of unnecesary stuff
 
-struct vec3_t
+struct vec3
 {
 	float x, y, z;
 
-	vec3_t() { x = y = z = 0; }
-	vec3_t(float a, float b, float c) : x(a), y(b), z(c) {}
-	vec3_t(float a, float b) : x(a), y(b), z(0) {}
+	vec3() { x = y = z = 0; }
+	vec3(float a, float b, float c) : x(a), y(b), z(c) {}
+	vec3(float a, float b) : x(a), y(b), z(0) {}
 
-	vec3_t(float *v) : x(v[0]), y(v[1]), z(v[2]) {}
+	vec3(float *v) : x(v[0]), y(v[1]), z(v[2]) {}
 
 	bool iszero() const { return x == 0 && y == 0 && z == 0; }
 	bool operator!() const { return x == 0 && y == 0 && z == 0; }
 
-	bool operator==(const vec3_t &o) const { return x == o.x && y == o.y && z == o.z; }
-	bool operator!=(const vec3_t &o) const { return x != o.x || y != o.y || z != o.z; }
-	vec3_t operator-() const { return vec3_t(-x, -y, -z); }
+	bool operator==(const vec3 &o) const { return x == o.x && y == o.y && z == o.z; }
+	bool operator!=(const vec3 &o) const { return x != o.x || y != o.y || z != o.z; }
+	vec3 operator-() const { return vec3(-x, -y, -z); }
 
-	vec3_t &mul(float f) { x *= f; y *= f; z *= f; return *this; }
-	vec3_t &div(float f) { x /= f; y /= f; z /= f; return *this; }
-	vec3_t &add(float f) { x += f; y += f; z += f; return *this; }
-	vec3_t &sub(float f) { x -= f; y -= f; z -= f; return *this; }
+	vec3 &mul(float f) { x *= f; y *= f; z *= f; return *this; }
+	vec3 &div(float f) { x /= f; y /= f; z /= f; return *this; }
+	vec3 &add(float f) { x += f; y += f; z += f; return *this; }
+	vec3 &sub(float f) { x -= f; y -= f; z -= f; return *this; }
 
-	vec3_t &add(const vec3_t &o) { x += o.x; y += o.y; z += o.z; return *this; }
-	vec3_t &sub(const vec3_t &o) { x -= o.x; y -= o.y; z -= o.z; return *this; }
+	vec3 &add(const vec3 &o) { x += o.x; y += o.y; z += o.z; return *this; }
+	vec3 &sub(const vec3 &o) { x -= o.x; y -= o.y; z -= o.z; return *this; }
 
-	float squaredlen() const { return x*x + y*y + z*z; }
-	float sqrxy() const { return x*x + y*y; }
+	float squaredlen() const { return x * x + y * y + z * z; }
+	float sqrxy() const { return x * x + y * y; }
 
-	float dot(const vec3_t &o) const { return x*o.x + y*o.y + z*o.z; }
-	float dotxy(const vec3_t &o) const { return x*o.x + y*o.y; }
+	float dot(const vec3 &o) const { return x * o.x + y * o.y + z * o.z; }
+	float dotxy(const vec3 &o) const { return x * o.x + y * o.y; }
 
 	float magnitude() const { return sqrtf(squaredlen()); }
-	vec3_t &normalize() { div(magnitude()); return *this; }
+	vec3 &normalize() { div(magnitude()); return *this; }
 
-	float dist(const vec3_t &e) const { vec3_t t; return dist(e, t); }
-	float dist(const vec3_t &e, vec3_t &t) const { t = *this; t.sub(e); return t.magnitude(); }
+	float dist(const vec3 &e) const { vec3 t; return dist(e, t); }
+	float dist(const vec3 &e, vec3 &t) const { t = *this; t.sub(e); return t.magnitude(); }
 
-	float Get2DDist(const vec3_t &e) const { float dx = e.x - x, dy = e.y - y; return sqrtf(dx*dx + dy*dy); }
+	float Get2DDist(const vec3 &e) const { float dx = e.x - x, dy = e.y - y; return sqrtf(dx*dx + dy * dy); }
 
-	float magnitudexy() const { return sqrtf(x*x + y*y); }
+	float magnitudexy() const { return sqrtf(x*x + y * y); }
 
-	vec3_t &cross(const vec3_t &a, const vec3_t &b) { x = a.y*b.z - a.z*b.y; y = a.z*b.x - a.x*b.z; z = a.x*b.y - a.y*b.x; return *this; }
-	float cxy(const vec3_t &a) { return x*a.y - y*a.x; }
+	vec3 &cross(const vec3 &a, const vec3 &b) { x = a.y*b.z - a.z*b.y; y = a.z*b.x - a.x*b.z; z = a.x*b.y - a.y*b.x; return *this; }
+	float cxy(const vec3 &a) { return x * a.y - y * a.x; }
 
-	vec3_t scaleFixedPoint(float scalex, float scaley, vec3_t fixedPoint)
+	vec3 scaleFixedPoint(float scalex, float scaley, vec3 fixedPoint)
 	{
-		vec3_t newvec;
+		vec3 newvec;
 		newvec.x = x * scalex + fixedPoint.x*(1 - scalex);
 		newvec.y = y * scaley + fixedPoint.y*(1 - scaley);
 		return newvec;
 	}
 
-	bool WorldToScreen(float fovx, float fovy, float windowWidth, float windowHeight, vec3_t left, vec3_t up, vec3_t forward, vec3_t origin, vec3_t &screen)
+	bool WorldToScreen(float fovx, float fovy, float windowWidth, float windowHeight, vec3 left, vec3 up, vec3 forward, vec3 origin, vec3 &screen)
 	{
-		vec3_t transform;
+		vec3 transform;
 		float xc, yc;
 		float px, py;
 		float z;
@@ -89,7 +87,7 @@ struct vec4
 		float v[4];
 	};
 	vec4() {}
-	explicit vec4(const vec3_t &p, float w = 0) : x(p.x), y(p.y), z(p.z), w(w) {}
+	explicit vec4(const vec3 &p, float w = 0) : x(p.x), y(p.y), z(p.z), w(w) {}
 	vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 	float &operator[](int i) { return v[i]; }
 	float  operator[](int i) const { return v[i]; }
@@ -127,7 +125,7 @@ struct glmatrixf
 		v[14] += z;
 	}
 
-	void translate(const vec3_t &o)
+	void translate(const vec3 &o)
 	{
 		translate(o.x, o.y, o.z);
 	}
@@ -139,17 +137,17 @@ struct glmatrixf
 		v[8] *= z; v[9] *= z; v[10] *= z; v[11] *= z;
 	}
 
-	void invertnormal(vec3_t &dir) const
+	void invertnormal(vec3 &dir) const
 	{
-		vec3_t n(dir);
+		vec3 n(dir);
 		dir.x = n.x*v[0] + n.y*v[1] + n.z*v[2];
 		dir.y = n.x*v[4] + n.y*v[5] + n.z*v[6];
 		dir.z = n.x*v[8] + n.y*v[9] + n.z*v[10];
 	}
 
-	void invertvertex(vec3_t &pos) const
+	void invertvertex(vec3 &pos) const
 	{
-		vec3_t p(pos);
+		vec3 p(pos);
 		p.x -= v[12];
 		p.y -= v[13];
 		p.z -= v[14];
@@ -158,7 +156,7 @@ struct glmatrixf
 		pos.z = p.x*v[8] + p.y*v[9] + p.z*v[10];
 	}
 
-	void transform(const vec3_t &in, vec4 &out) const
+	void transform(const vec3 &in, vec4 &out) const
 	{
 		out.x = transformx(in);
 		out.y = transformy(in);
@@ -166,50 +164,50 @@ struct glmatrixf
 		out.w = transformw(in);
 	}
 
-	float transformx(const vec3_t &p) const
+	float transformx(const vec3 &p) const
 	{
 		return p.x*v[0] + p.y*v[4] + p.z*v[8] + v[12];
 	}
 
-	float transformy(const vec3_t &p) const
+	float transformy(const vec3 &p) const
 	{
 		return p.x*v[1] + p.y*v[5] + p.z*v[9] + v[13];
 	}
 
-	float transformz(const vec3_t &p) const
+	float transformz(const vec3 &p) const
 	{
 		return p.x*v[2] + p.y*v[6] + p.z*v[10] + v[14];
 	}
 
-	float transformw(const vec3_t &p) const
+	float transformw(const vec3 &p) const
 	{
 		return p.x*v[3] + p.y*v[7] + p.z*v[11] + v[15];
 	}
 
-	vec3_t gettranslation() const
+	vec3 gettranslation() const
 	{
-		return vec3_t(v[12], v[13], v[14]);
+		return vec3(v[12], v[13], v[14]);
 	}
 
 	//assault cube world2screen
-	vec3_t transform(glmatrixf *matrix, vec3_t &totransform)
+	vec3 transform(glmatrixf *matrix, vec3 &totransform)
 	{
-		return vec3_t(matrix->transformx(totransform),
+		return vec3(matrix->transformx(totransform),
 			matrix->transformy(totransform),
 			matrix->transformz(totransform)).div(matrix->transformw(totransform));
 	}
 };
 
-vec3_t Subtract(vec3_t src, vec3_t dst);
+vec3 Subtract(vec3 src, vec3 dst);
 
-float Magnitude(vec3_t vec);
+float Magnitude(vec3 vec);
 
-float Distance(vec3_t src, vec3_t dst);
+float Distance(vec3 src, vec3 dst);
 
-vec3_t Normalize(vec3_t src);
+vec3 Normalize(vec3 src);
 
-vec3_t CalcAngle(vec3_t src, vec3_t dst);
+vec3 CalcAngle(vec3 src, vec3 dst);
 
-bool WorldToScreen(vec3_t pos, vec3_t &screen, float v[16], int windowWidth, int windowHeight);
+bool WorldToScreen(vec3 pos, vec3 &screen, float v[16], int windowWidth, int windowHeight);
 
-float DifferenceOfAngles(vec3_t src, vec3_t dst);
+float DifferenceOfAngles(vec3 src, vec3 dst);

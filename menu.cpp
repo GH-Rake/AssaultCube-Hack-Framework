@@ -95,7 +95,7 @@ void row::Draw()
 
 	if (type == M_FUNCTION)
 	{
-		vec3_t pos = pmenu->font.centerText(pmenu->x, pmenu->nextRowY, pmenu->width, height, pmenu->width - MENU_ROW_XBUFFER, MENU_FONT_HEIGHT);
+		vec3 pos = pmenu->font.centerText(pmenu->x, pmenu->nextRowY, pmenu->width, height, pmenu->width - MENU_ROW_XBUFFER, MENU_FONT_HEIGHT);
 
 		if (status != nullptr)
 		{
@@ -111,7 +111,7 @@ void row::Draw()
 
 	else
 	{
-		vec3_t pos = pmenu->font.centerText(pmenu->x, pmenu->nextRowY, pmenu->width, height, strlen(text) * MENU_FONT_WIDTH, MENU_FONT_HEIGHT);
+		vec3 pos = pmenu->font.centerText(pmenu->x, pmenu->nextRowY, pmenu->width, height, strlen(text) * MENU_FONT_WIDTH, MENU_FONT_HEIGHT);
 		pmenu->font.Print(pos.x, pos.y, MENU_FONT_COLOR, "%s", text);
 	}
 }

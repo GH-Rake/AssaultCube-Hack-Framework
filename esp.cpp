@@ -6,14 +6,14 @@
 #define PLAYER_HEIGHT 5.25f
 #define PLAYER_WIDTH 2.0f
 #define EYE_HEIGHT 4.5f
-#define PLAYER_ASPECT_RATIO PLAYER_HEIGHT / PLAYER_WIDTH  //is this same in every game?
+#define PLAYER_ASPECT_RATIO PLAYER_HEIGHT / PLAYER_WIDTH
 
 #define ESP_FONT_HEIGHT 15
 #define ESP_FONT_WIDTH 9
 
 // should just take game as argument eh?
 
-void FW::ESP::DrawBox(FW::Player_t p, vec3_t screen, GL::Font &font, int windowWidth)
+void FW::ESP::DrawBox(FW::Player_t p, vec3 screen, GL::Font &font, int windowWidth)
 {
 	const GLubyte * color = nullptr;
 	if (p.bEnemy) // or p.bEnemy()
@@ -40,7 +40,7 @@ void FW::ESP::ESP(std::vector<FW::Player_t> players, float matrix[16], int windo
 {
 	for (auto p : players)
 	{
-		vec3_t center = *p.head;
+		vec3 center = *p.head;
 		center.z = center.z - EYE_HEIGHT + PLAYER_HEIGHT / 2;
 
 		if (WorldToScreen(center, p.screen, matrix, windowWidth, windowHeight))

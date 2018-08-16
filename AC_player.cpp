@@ -16,7 +16,6 @@ AC_Player_t::AC_Player_t(playerent* ent)
 	else state = DEAD;
 }
 
-//use pointers or no?  idk!
 AC_Player_t::AC_Player_t(playerent* ent, bool bTeamGame, int localTeam, float * matrix, int windowWidth, int windowHeight, playerent * localPlayer)
 {
 	pos = &ent->pos;
@@ -53,8 +52,8 @@ bool AC_Player_t::IsVisible(playerent * localEnt)
 uintptr_t traceLine = 0x048a310;
 traceresult_s traceresult;
 traceresult.collided = false;
-vec3_t from = localEnt->head;
-vec3_t to = *head;
+vec3 from = localEnt->head;
+vec3 to = *head;
 
 __asm
 {
@@ -80,8 +79,8 @@ bool AC_Player_t::IsVisible(playerent * localent)
 	uintptr_t traceLine = 0x048a310;
 	traceresult_s traceresult;
 	traceresult.collided = false;
-	vec3_t from = localent->head;
-	vec3_t to = *head;
+	vec3 from = localent->head;
+	vec3 to = *head;
 
 	__asm
 	{

@@ -95,10 +95,10 @@ class playerent
 {
 public:
 	DWORD vTable; //0x0
-	vec3_t head; //0x0004
+	vec3 head; //0x0004
 	char _0x0010[36];
-	vec3_t pos; //0x0034
-	vec3_t angle; //0x0040
+	vec3 pos; //0x0034
+	vec3 angle; //0x0040
 	char _0x004C[37];
 	BYTE bScoping; //0x0071
 	char _0x0072[134];
@@ -128,7 +128,7 @@ public:
 	mapEnt* mapent; //0x0004
 	__int32 number; //0x0008
 	playerent* player; //0x000C
-	vec3_t pos; //0x0010
+	vec3 pos; //0x0010
 	__int32 state; //0x001C
 	__int32 unknown2; //0x0020
 };//Size=0x0024
@@ -155,6 +155,6 @@ struct sqr
 
 struct traceresult_s
 {
-	vec3_t end;
+	vec3 end;
 	bool collided;
 };

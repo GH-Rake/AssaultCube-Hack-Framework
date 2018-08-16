@@ -44,7 +44,7 @@ void FW::Aimbot_t::GetCrossHair(int viewport[4])
 	crossHair.y = viewport[3] / 2;
 }
 
-void FW::Aimbot_t::MoveMouse(vec3_t target, int windowWidth, int windowHeight)
+void FW::Aimbot_t::MoveMouse(vec3 target, int windowWidth, int windowHeight)
 {
 	INPUT Input = { 0 };
 	Input.type = INPUT_MOUSE;

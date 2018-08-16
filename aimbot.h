@@ -12,7 +12,7 @@ namespace FW
 	public:
 		bool bTargetLock = false;
 		bool bAttack = false;
-		vec3_t crossHair;
+		vec3 crossHair;
 
 		Player_t localPlayer;
 		std::vector<Player_t> players;
@@ -21,7 +21,7 @@ namespace FW
 
 		void StartShootThread(bool * bAimbot);
 		void GetCrossHair(int viewport[4]);
-		void MoveMouse(vec3_t point, int windowWidth, int windowHeight);
+		void MoveMouse(vec3 point, int windowWidth, int windowHeight);
 		void GetTarget(Player_t localPlayer);
 	};
 

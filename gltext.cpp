@@ -32,9 +32,9 @@ void GL::Font::Print(float x, float y, const unsigned char color[3], const char 
 	glPopAttrib();
 }
 
-vec3_t GL::Font::centerText(float x, float y, float width, float height, float textWidth, float textHeight)
+vec3 GL::Font::centerText(float x, float y, float width, float height, float textWidth, float textHeight)
 {
-	vec3_t text;
+	vec3 text;
 	text.x = x + (width - textWidth) / 2;
 	text.y = y + textHeight;
 	return text;
