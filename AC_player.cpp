@@ -16,13 +16,13 @@ AC_Player_t::AC_Player_t(playerent* ent)
 	else state = DEAD;
 }
 
-AC_Player_t::AC_Player_t(playerent* ent, bool bTeamGame, int localTeam, float * matrix, int windowWidth, int windowHeight, playerent * localPlayer)
+AC_Player_t::AC_Player_t(playerent* ent, bool bTeamGame, int localTeam, float* matrix, int windowWidth, int windowHeight, playerent* localPlayer)
 {
 	pos = &ent->pos;
 	head = &ent->head;
 	angle = &ent->angle;
 	//*velocity = ent->velocity; add later
-	strcpy(name, ent->name);
+	strcpy_s(name, 16, ent->name);
 	health = &ent->health;
 	team = ent->team;
 
@@ -74,7 +74,7 @@ return !traceresult.collided;
 }
 */
 
-bool AC_Player_t::IsVisible(playerent * localent)
+bool AC_Player_t::IsVisible(playerent* localent)
 {
 	uintptr_t traceLine = 0x048a310;
 	traceresult_s traceresult;

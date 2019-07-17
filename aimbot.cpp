@@ -1,6 +1,6 @@
 #include "aimbot.h"
 
-void FW::ShootThread(FW::Aimbot_t * aimbot, bool *bAimbot)
+void FW::ShootThread(FW::Aimbot_t* aimbot, bool* bAimbot)
 {
 	INPUT leftMouseShoot = { 0 };
 	while (1)
@@ -22,7 +22,7 @@ void FW::ShootThread(FW::Aimbot_t * aimbot, bool *bAimbot)
 	}
 }
 
-bool FW::SortByAngle(FW::Player_t *lhs, FW::Player_t *rhs)
+bool FW::SortByAngle(FW::Player_t* lhs, FW::Player_t* rhs)
 {
 	//if (abs(lhs->angleDiff - rhs->angleDiff) < 30)
 	{
@@ -32,7 +32,7 @@ bool FW::SortByAngle(FW::Player_t *lhs, FW::Player_t *rhs)
 	return lhs->angleDiff < rhs->angleDiff;
 }
 
-void FW::Aimbot_t::StartShootThread(bool * bAimbot)
+void FW::Aimbot_t::StartShootThread(bool* bAimbot)
 {
 	std::thread shootThread(ShootThread, this, bAimbot);
 	shootThread.detach();
@@ -72,7 +72,7 @@ void FW::Aimbot_t::GetTarget(Player_t localPlayer)
 	targets.clear();
 	target = nullptr;
 
-	for (auto &p : FW::Aimbot_t::players)
+	for (auto& p : FW::Aimbot_t::players)
 	{
 		if (!p.bEnemy) continue;
 		if (!p.bVisible) continue;

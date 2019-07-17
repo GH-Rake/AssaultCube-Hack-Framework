@@ -16,6 +16,7 @@ void FW::Player_t::Calculate(Player_t localPlayer)
 	dist = Distance(*localPlayer.pos, *pos);
 	angleTo = CalcAngle(*localPlayer.pos, *pos);
 	angleDiff = Distance(*localPlayer.angle, angleTo);
+
 }
 
 bool FW::Player_t::IsVisible(Player_t localPlayer)

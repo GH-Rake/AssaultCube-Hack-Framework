@@ -35,7 +35,7 @@ float DotProduct(vec3 src, vec3 dst)
 
 float Magnitude(vec3 vec)
 {
-	return sqrtf(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z);
+	return sqrtf(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
 }
 
 float Distance(vec3 src, vec3 dst)
@@ -52,11 +52,12 @@ vec3 Normalize(vec3 src)
 
 vec3 CalcAngle(vec3 src, vec3 dst)
 {
-	vec3 angles;
-	angles.x = (-(float)atan2(dst.x - src.x, dst.y - src.y)) / PI * 180.0f + 180.0f;
-	angles.y = (atan2(dst.z - src.z, Distance(src, dst))) * 180.0f / PI;
-	angles.z = 0.0f;
-	return angles;
+	vec3 angle;
+	angle.x = -atan2f(dst.x - src.x, dst.y - src.y) / PI * 180.0f + 180.0f;
+	angle.y = asinf((dst.z - src.z) / Distance(src, dst)) * 180.0f / PI;
+	angle.z = 0.0f;
+
+	return angle;
 }
 
 float DifferenceOfAngles(vec3 src, vec3 dst)
@@ -81,14 +82,14 @@ float DifferenceOfAngles(vec3 src, vec3 dst)
 	return fDifference;
 }
 
-bool WorldToScreen(vec3 pos, vec3 &screen, float matrix[16], int windowWidth, int windowHeight)
+bool WorldToScreen(vec3 pos, vec3& screen, float matrix[16], int windowWidth, int windowHeight)
 {
 	//Matrix-vector Product, multiplying world(eye) coordinates by projection matrix = clipCoords
 	vec4 clipCoords;
-	clipCoords.x = pos.x*matrix[0] + pos.y*matrix[4] + pos.z*matrix[8] + matrix[12];
-	clipCoords.y = pos.x*matrix[1] + pos.y*matrix[5] + pos.z*matrix[9] + matrix[13];
-	clipCoords.z = pos.x*matrix[2] + pos.y*matrix[6] + pos.z*matrix[10] + matrix[14];
-	clipCoords.w = pos.x*matrix[3] + pos.y*matrix[7] + pos.z*matrix[11] + matrix[15];
+	clipCoords.x = pos.x * matrix[0] + pos.y * matrix[4] + pos.z * matrix[8] + matrix[12];
+	clipCoords.y = pos.x * matrix[1] + pos.y * matrix[5] + pos.z * matrix[9] + matrix[13];
+	clipCoords.z = pos.x * matrix[2] + pos.y * matrix[6] + pos.z * matrix[10] + matrix[14];
+	clipCoords.w = pos.x * matrix[3] + pos.y * matrix[7] + pos.z * matrix[11] + matrix[15];
 
 	if (clipCoords.w < 0.1f)
 		return false;
@@ -104,7 +105,7 @@ bool WorldToScreen(vec3 pos, vec3 &screen, float matrix[16], int windowWidth, in
 	return true;
 }
 
-bool WorldToScreen2(vec3 src, vec3 dst, vec3 &screen, float fovx, float fovy, float windowWidth, float windowHeight, vec3 left, vec3 up, vec3 forward)
+bool WorldToScreen2(vec3 src, vec3 dst, vec3& screen, float fovx, float fovy, float windowWidth, float windowHeight, vec3 left, vec3 up, vec3 forward)
 {
 	vec3 transform;
 	float xc, yc;
@@ -126,8 +127,8 @@ bool WorldToScreen2(vec3 src, vec3 dst, vec3 &screen, float fovx, float fovy, fl
 		return false;
 	}
 
-	screen.x = xc - DotProduct(transform, up) *xc / (z*px);
-	screen.y = yc - DotProduct(transform, forward) *yc / (z*py);
+	screen.x = xc - DotProduct(transform, up) * xc / (z * px);
+	screen.y = yc - DotProduct(transform, forward) * yc / (z * py);
 
 	return true;
 }

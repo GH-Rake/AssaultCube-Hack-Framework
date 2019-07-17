@@ -1,15 +1,14 @@
 #pragma once
 #include "hackgl.h"
 
-void GL::Hook(char* function, uintptr_t &oFunction, void * hFunction)
+void GL::Hook(char* function, uintptr_t& oFunction, void* hFunction)
 {
 	HMODULE hMod = GetModuleHandle("opengl32.dll");
 
 	if (hMod)
 	{
-		oFunction = (uintptr_t)GetProcAddress(hMod, function);
 
-		oFunction = (uintptr_t)mem::TrampolineHook((void*)oFunction, hFunction, 5);
+		oFunction = (uintptr_t)mem::TrampolineHook((void*)GetProcAddress(hMod, function), hFunction, 5);
 	}
 }
 

@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include "AC_Hack.h"
 
-extern AC_t * AC;
+extern AC_t* AC;
 
 DWORD __stdcall Init(LPVOID param)
 {
@@ -18,7 +18,7 @@ BOOL __stdcall DllMain(HINSTANCE hModule, uintptr_t  dwReason, LPVOID lpReserved
 	{
 	case DLL_PROCESS_ATTACH:
 		CreateThread(nullptr, 0, Init, nullptr, 0, nullptr);
-		DisableThreadLibraryCalls(hModule);
+		//DisableThreadLibraryCalls(hModule);
 		break;
 
 	case DLL_PROCESS_DETACH:

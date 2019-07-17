@@ -36,7 +36,7 @@ std::vector<byte*> mem::FindPatterns(byte pattern[], int length, byte* begin, by
 }
 
 //Credits to Solaire!
-bool mem::Hook(void * toHook, void * ourFunct, int len)
+bool mem::Hook(void* src, void* dst, int len)
 {
 	if (len < 5)
 	{
@@ -44,23 +44,23 @@ bool mem::Hook(void * toHook, void * ourFunct, int len)
 	}
 
 	DWORD  curProtection;
-	VirtualProtect(toHook, len, PAGE_EXECUTE_READWRITE, &curProtection);
+	VirtualProtect(src, len, PAGE_EXECUTE_READWRITE, &curProtection);
 
-	memset(toHook, 0x90, len);
+	memset(src, 0x90, len);
 
-	uintptr_t  relativeAddress = ((uintptr_t)ourFunct - (uintptr_t)toHook) - 5;
+	uintptr_t  relativeAddress = ((uintptr_t)dst - (uintptr_t)src) - 5;
 
-	*(BYTE*)toHook = 0xE9;
-	*(uintptr_t *)((uintptr_t)toHook + 1) = relativeAddress;
+	*(BYTE*)src = 0xE9;
+	*(uintptr_t*)((uintptr_t)src + 1) = relativeAddress;
 
 	DWORD  temp;
-	VirtualProtect(toHook, len, curProtection, &temp);
+	VirtualProtect(src, len, curProtection, &temp);
 
 	return true;
 }
 
 //Credits to Solaire!
-void * mem::TrampolineHook(void * toHook, void * ourFunct, int len)
+void* mem::TrampolineHook(void* src, void* dst, int len)
 {
 	// Make sure the length is greater than 5
 	if (len < 5) {
@@ -68,22 +68,22 @@ void * mem::TrampolineHook(void * toHook, void * ourFunct, int len)
 	}
 
 	// Create the gateway (len + 5 for the overwritten bytes + the jmp)
-	void * gateway = VirtualAlloc(0, len + 5, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+	void* gateway = VirtualAlloc(0, len + 5, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
 
 	// Put the bytes that will be overwritten in the gateway
-	memcpy(gateway, toHook, len);
+	memcpy(gateway, src, len);
 
 	// Get the gateway to destination addy
-	uintptr_t  gateJmpAddy = ((uintptr_t)toHook - (uintptr_t)gateway) - 5;
+	uintptr_t  gateJmpAddy = ((uintptr_t)src - (uintptr_t)gateway) - 5;
 
 	// Add the jmp opcode to the end of the gateway
 	*(BYTE*)((uintptr_t)gateway + len) = 0xE9;
 
 	// Add the address to the jmp
-	*(uintptr_t *)((uintptr_t)gateway + len + 1) = gateJmpAddy;
+	*(uintptr_t*)((uintptr_t)gateway + len + 1) = gateJmpAddy;
 
 	// Place the hook at the destination
-	Hook(toHook, ourFunct, len);
+	Hook(src, dst, len);
 
 	return gateway;
 }
@@ -107,7 +107,7 @@ hook::hook(char* functName, void* h, int len)
 void mem::Patch(uintptr_t* dst, uintptr_t* src, int size)
 {
 	DWORD oldprotect;
-	VirtualProtect(dst, size, PAGE_READWRITE, &oldprotect);
+	VirtualProtect(dst, size, PAGE_EXECUTE_READWRITE, &oldprotect);
 	memcpy(dst, src, size);
 	VirtualProtect(dst, size, oldprotect, &oldprotect);
 }
@@ -116,7 +116,7 @@ void mem::Patch(uintptr_t* dst, uintptr_t* src, int size)
 void PatchEx(HANDLE hProcess, void* dst, void* src, int size)
 {
 	DWORD oldprotect;
-	VirtualProtectEx(hProcess, dst, size, PAGE_READWRITE, &oldprotect);
+	VirtualProtectEx(hProcess, dst, size, PAGE_EXECUTE_READWRITE, &oldprotect);
 	WriteProcessMemory(hProcess, dst, src, size, NULL);
 	VirtualProtectEx(hProcess, dst, size, oldprotect, &oldprotect);
 }

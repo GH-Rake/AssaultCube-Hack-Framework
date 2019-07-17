@@ -60,7 +60,7 @@ void Menu_t::Draw()
 	nextRowY = y;
 }
 
-row::row(rowtype_t type, char* text, bool * status)
+row::row(rowtype_t type, char* text, bool* status)
 {
 	this->type = type;
 	this->text = text;

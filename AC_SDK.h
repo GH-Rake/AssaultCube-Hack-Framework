@@ -82,11 +82,11 @@ class weapon
 public:
 	char pad_0x0000[0x4]; //0x0000
 	__int32 ID; //0x0004
-	playerent * owner; //0x0008
-	uintptr_t  * guninfo; //0x000C
-	int * ammo2; //0x0010
-	int * ammo; //0x0014
-	int * gunWait;
+	playerent* owner; //0x0008
+	uintptr_t* guninfo; //0x000C
+	int* ammo2; //0x0010
+	int* ammo; //0x0014
+	int* gunWait;
 	int shots;
 	int breload;
 };
@@ -118,7 +118,7 @@ public:
 
 struct entList
 {
-	playerent * ents[31];
+	playerent* ents[31];
 };
 
 class flagEnt

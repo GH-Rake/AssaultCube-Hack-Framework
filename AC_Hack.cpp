@@ -16,7 +16,7 @@ void AC_t::ReadPlayerData()
 		}
 	}
 
-	for (auto &p : players)
+	for (auto& p : players)
 	{
 		p.Calculate(FW::Aimbot_t::localPlayer);
 	}
@@ -66,7 +66,7 @@ void AC_t::HackLoop()
 	}
 }
 
-AC_t * AC = nullptr;
+AC_t* AC;
 
 //wglSwapBuffers Hook
 GL::twglSwapBuffers owglSwapBuffers;
@@ -93,7 +93,7 @@ void AC_t::Load()
 	//fullbright = new Hack((void*))
 
 	keybinds->Enable();
-	GL::Hook("wglSwapBuffers", (uintptr_t &)owglSwapBuffers, &hwglSwapBuffers);
+	GL::Hook("wglSwapBuffers", (uintptr_t&)owglSwapBuffers, &hwglSwapBuffers);
 }
 
 std::vector<row> AC_t::HackMenu()

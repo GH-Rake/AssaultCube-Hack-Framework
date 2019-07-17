@@ -2,7 +2,6 @@
 
 #define GAME_UNIT_MAGIC 400
 #define VIRTUAL_SCREEN_WIDTH 800
-#define WINDOWWIDTH 800
 #define PLAYER_HEIGHT 5.25f
 #define PLAYER_WIDTH 2.0f
 #define EYE_HEIGHT 4.5f
@@ -13,9 +12,9 @@
 
 // should just take game as argument eh?
 
-void FW::ESP::DrawBox(FW::Player_t p, vec3 screen, GL::Font &font, int windowWidth)
+void FW::ESP::DrawBox(FW::Player_t p, vec3 screen, GL::Font & font, int windowWidth)
 {
-	const GLubyte * color = nullptr;
+	const GLubyte* color = nullptr;
 	if (p.bEnemy) // or p.bEnemy()
 	{
 		color = rgb::red;
@@ -36,7 +35,7 @@ void FW::ESP::DrawBox(FW::Player_t p, vec3 screen, GL::Font &font, int windowWid
 }
 
 //loop through players
-void FW::ESP::ESP(std::vector<FW::Player_t> players, float matrix[16], int windowWidth, int windowHeight, GL::Font &font)
+void FW::ESP::ESP(std::vector<FW::Player_t> players, float matrix[16], int windowWidth, int windowHeight, GL::Font& font)
 {
 	for (auto p : players)
 	{

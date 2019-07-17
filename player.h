@@ -11,8 +11,8 @@ namespace FW
 	{
 	public:
 		//variables to pull from memory
-		vec3 * pos, *head, *angle, *velocity;
-		int * health;
+		vec3* pos, * head, * angle, * velocity;
+		int* health;
 		state_t state;
 		int team;
 		char name[16];

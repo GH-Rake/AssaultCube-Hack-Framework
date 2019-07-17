@@ -9,8 +9,8 @@ namespace mem
 	//Find all matching patterns
 	std::vector<byte*> FindPatterns(byte pattern[], int length, byte* begin, byte* end);
 
-	bool Hook(void * toHook, void * ourFunct, int len);
-	void * TrampolineHook(void * toHook, void * ourFunct, int len);
+	bool Hook(void* src, void* dst, int len);
+	void* TrampolineHook(void* src, void* dst, int len);
 	void Patch(uintptr_t* dst, uintptr_t* src, int size);
 };
 

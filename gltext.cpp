@@ -14,7 +14,7 @@ void GL::Font::Build(int height)
 	bBuilt = true;
 }
 
-void GL::Font::Print(float x, float y, const unsigned char color[3], const char *format, ...)
+void GL::Font::Print(float x, float y, const unsigned char color[3], const char* format, ...)
 {
 	glColor3ub(color[0], color[1], color[2]);
 	glRasterPos2f(x, y);

@@ -18,7 +18,7 @@ namespace GL
 {
 	//GLint viewport[4];
 
-	void Hook(char* function, uintptr_t  &oFunction, void * hFunction);
+	void Hook(char* function, uintptr_t& oFunction, void* hFunction);
 
 	void SetupOrtho();
 	void RestoreGL();
@@ -26,5 +26,5 @@ namespace GL
 	void DrawFilledRect(float x, float y, float width, float height, const GLubyte color[3]);
 	void DrawOutline(float x, float y, float width, float height, float lineWidth, const GLubyte color[3]);
 
-	typedef BOOL(__stdcall * twglSwapBuffers) (_In_ HDC hDc);
+	typedef BOOL(__stdcall* twglSwapBuffers) (HDC hDc);
 }

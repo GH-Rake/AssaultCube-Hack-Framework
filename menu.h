@@ -37,13 +37,13 @@ class row
 {
 public:
 	enum rowtype_t type;
-	char * text;
-	char * text2;
-	bool * status;
+	char* text;
+	char* text2;
+	bool* status;
 	float height;
-	Menu_t * pmenu;
+	Menu_t* pmenu;
 
-	row(rowtype_t type, char* text, bool * status);
+	row(rowtype_t type, char* text, bool* status);
 	void Draw();
 };
 
